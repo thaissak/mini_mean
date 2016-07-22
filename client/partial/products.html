@@ -1,0 +1,23 @@
+<h1>Products</h1>
+
+<div id="left_product">
+	<input type="text" ng-model="filter_products" placeholder="Search"></input>
+	<!-- <button>Filter</button> -->
+
+	<h3>Add new product</h3>
+	<form>
+		Name:<input type="text" ng-model="newProduct.prod_name"></input>
+		Image:<input type="text" ng-model="newProduct.image"></input>
+		Description:<input type="text" ng-model="newProduct.description"></input>
+		Initial Qtty:<input type="number" ng-model="newProduct.quantity"></input>
+		<button type="submit" ng-click="addProduct()">Create</button>
+	</form>
+</div>
+
+<div id="right_product">
+    <div class="prod_box" ng-repeat="product in products | orderBy:'prod_name' | filter:filter_products">
+        <img src="{{ product.image }}">
+        <h3>{{ product.prod_name }}</h3> 
+        <h4>({{ product.quantity }} left)</h4>
+    </div>           
+</div>
